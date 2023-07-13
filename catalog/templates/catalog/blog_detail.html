@@ -1,0 +1,21 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+{% load catalog_tags %}
+
+{% block content %}
+
+    <article class="blog-post">
+        <h2 class="display-5 link-body-emphasis mb-1">{{ blog.title }}</h2>
+
+        <p>{{ blog.content|linebreaks }}</p>
+        <p>Просмотры: {{ blog.num_views }}</p>
+        <hr>
+
+        {% if blog.image %}
+        <img src= "{{ blog.image.url }}" width="500">
+        {% endif %}
+
+
+    </article>
+
+{% endblock %}
