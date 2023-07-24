@@ -1,3 +1,6 @@
+import django
+from django import setup
+django.setup()
 from django.db import models
 from django.urls import reverse
 from slugify import slugify
@@ -37,7 +40,7 @@ class Category(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=150, verbose_name='заголовок')
-    slug = models.CharField(max_length=255, unique=True, db_index=True, verbose_name='URL')
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
     content = models.TextField(blank=True, verbose_name='содержимое')
     image = models.ImageField(upload_to='Blog/', blank=True, verbose_name='превью')
     date_create = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
@@ -48,7 +51,7 @@ class Blog(models.Model):
         return f'{self.title} - {self.is_public}'
 
     def save(self, *args, **kwargs):
-        # self.slug = slugify(self.title)
+        self.slug = slugify(self.title)
         super(Blog, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
