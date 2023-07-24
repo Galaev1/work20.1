@@ -40,7 +40,7 @@ class Category(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=150, verbose_name='заголовок')
-    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
+    slug = models.SlugField(max_length=255, unique=False, db_index=True, verbose_name='URL')
     content = models.TextField(blank=True, verbose_name='содержимое')
     image = models.ImageField(upload_to='Blog/', blank=True, verbose_name='превью')
     date_create = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
