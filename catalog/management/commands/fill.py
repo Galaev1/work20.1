@@ -172,10 +172,10 @@ class Command(BaseCommand):
              },
         ]
 
-        blog_for_create = []
-        for blog_item in blog_list:
-            blog_for_create.append(
-                Blog(**blog_item)
-            )
-
-        Blog.objects.bulk_create(blog_for_create)
+        # blog_for_create = []
+        # for blog_item in blog_list:
+        #     blog_for_create.append(
+        #         Blog(**blog_item)
+        #     )
+        # 
+        # Blog.objects.bulk_create(blog_for_create)
